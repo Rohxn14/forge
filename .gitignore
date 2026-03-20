@@ -1,0 +1,10 @@
+node_modules/
+forge.db
+forge.db-journal
+dist/
+build/
+.env
+.env.local
+.vscode/
+.DS_Store
+*.log
