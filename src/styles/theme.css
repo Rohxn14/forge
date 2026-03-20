@@ -1,0 +1,267 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root {
+  /* Fire Palette */
+  --ember: #FF4500;
+  --molten: #FF6B00;
+  --flame: #FF8C42;
+  --ash: #1A1A1A;
+  --char: #0D0D0D;
+  
+  /* Ice Palette */
+  --glacier: #0A2A4A;
+  --frost: #A8D8EA;
+  --steel: #4A90B8;
+  --ice: #E8F4F8;
+  --arctic: #002B5C;
+  
+  /* Neutral */
+  --white: #FFFFFF;
+  --black: #000000;
+  --gray-dark: #2A2A2A;
+  --gray-mid: #808080;
+  --gray-light: #CCCCCC;
+  
+  /* Typography */
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  
+  /* Spacing */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+  
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 300ms ease;
+  --transition-slow: 500ms ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-mono);
+  background: var(--char);
+  color: var(--ice);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Fire Theme - Action Screens */
+.fire-screen {
+  background: linear-gradient(135deg, var(--char) 0%, var(--ash) 100%);
+  min-height: 100vh;
+}
+
+.fire-glow {
+  box-shadow: 0 0 20px rgba(255, 69, 0, 0.3),
+              0 0 40px rgba(255, 107, 0, 0.2);
+}
+
+.fire-text {
+  color: var(--ember);
+  font-family: var(--font-display);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Ice Theme - Reflection Screens */
+.ice-screen {
+  background: linear-gradient(135deg, var(--arctic) 0%, var(--glacier) 100%);
+  min-height: 100vh;
+}
+
+.ice-glow {
+  box-shadow: 0 0 20px rgba(74, 144, 184, 0.3),
+              0 0 40px rgba(168, 216, 234, 0.2);
+}
+
+.ice-text {
+  color: var(--frost);
+  font-family: var(--font-display);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Buttons */
+.btn {
+  padding: var(--space-sm) var(--space-lg);
+  border: none;
+  font-family: var(--font-display);
+  font-size: 20px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-fire {
+  background: var(--ember);
+  color: var(--white);
+  border: 2px solid var(--molten);
+}
+
+.btn-fire:hover {
+  background: var(--molten);
+  box-shadow: 0 0 30px rgba(255, 69, 0, 0.6);
+  transform: translateY(-2px);
+}
+
+.btn-ice {
+  background: var(--steel);
+  color: var(--white);
+  border: 2px solid var(--frost);
+}
+
+.btn-ice:hover {
+  background: var(--frost);
+  color: var(--glacier);
+  box-shadow: 0 0 30px rgba(168, 216, 234, 0.6);
+  transform: translateY(-2px);
+}
+
+/* Input Fields */
+.input {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid var(--gray-mid);
+  color: var(--white);
+  padding: var(--space-sm);
+  font-family: var(--font-mono);
+  font-size: 16px;
+  width: 100%;
+  transition: all var(--transition-normal);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--ember);
+  box-shadow: 0 0 20px rgba(255, 69, 0, 0.3);
+}
+
+.input-ice:focus {
+  border-color: var(--frost);
+  box-shadow: 0 0 20px rgba(168, 216, 234, 0.3);
+}
+
+/* Task Card */
+.task-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid var(--gray-dark);
+  padding: var(--space-md);
+  margin-bottom: var(--space-sm);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.task-card:hover {
+  border-color: var(--ember);
+  transform: translateX(4px);
+}
+
+.task-card.completed {
+  border-color: var(--ember);
+  background: rgba(255, 69, 0, 0.1);
+}
+
+.task-card.completed .task-name {
+  color: var(--ember);
+  text-decoration: line-through;
+}
+
+/* Animations */
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes pulse-fire {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(255, 69, 0, 0.3);
+  }
+  50% { 
+    box-shadow: 0 0 40px rgba(255, 69, 0, 0.6);
+  }
+}
+
+@keyframes pulse-ice {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(168, 216, 234, 0.3);
+  }
+  50% { 
+    box-shadow: 0 0 40px rgba(168, 216, 234, 0.6);
+  }
+}
+
+.pulse-fire {
+  animation: pulse-fire 2s infinite;
+}
+
+.pulse-ice {
+  animation: pulse-ice 2s infinite;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-xl);
+}
+
+/* Typography Utilities */
+h1 {
+  font-family: var(--font-display);
+  font-size: 72px;
+  letter-spacing: 4px;
+  margin-bottom: var(--space-md);
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 48px;
+  letter-spacing: 3px;
+  margin-bottom: var(--space-md);
+}
+
+h3 {
+  font-family: var(--font-display);
+  font-size: 32px;
+  letter-spacing: 2px;
+  margin-bottom: var(--space-sm);
+}
+
+p {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: var(--space-sm);
+}
+
+/* Screen transitions */
+.screen-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.screen-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all var(--transition-slow);
+}
+@keyframes slideIn {
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
